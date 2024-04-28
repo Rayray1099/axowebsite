@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>複製代碼</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        #codeInput {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            font-family: monospace;
+        }
+
+        #copyButton {
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 18px;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #copyButton:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Youtube廣告阻擋破解</h1>
+    
+    <textarea id="codeInput" placeholder="粘貼您的代碼">
+youtube.com##+js(set, yt.config_.openPopupConfig.supportedPopups.adBlockMessageViewModel, false)
+
+youtube.com##+js(set, Object.prototype.adBlocksFound, 0)
+        
+youtube.com##+js(set, ytplayer.config.args.raw_player_response.adPlacements, [])
+        
+youtube.com##+js(set, Object.prototype.hasAllowedInstreamAd, true)
+    </textarea>
+    <button id="copyButton">複製代碼</button>
+
+    <script>
+        // Function to copy code to clipboard
+        document.getElementById("copyButton").addEventListener("click", function() {
+            const codeInput = document.getElementById("codeInput");
+            const textArea = document.createElement("textarea");
+            textArea.value = codeInput.value;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            alert("代碼成功複製到剪貼板！");
+        });
+    </script>
+</body>
+</html>

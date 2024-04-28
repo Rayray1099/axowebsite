@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>正在重新導向...</title>
+  <script>
+    // Countdown function
+    function countdown() {
+      var seconds = 2; // Number of seconds to countdown
+      var countdownElement = document.getElementById("countdown");
+
+      var countdownInterval = setInterval(function() {
+        countdownElement.textContent = seconds;
+        seconds--;
+
+        if (seconds < 0) {
+          clearInterval(countdownInterval);
+          redirect();
+        }
+      }, 1000);
+    }
+
+    // Redirect function
+    function redirect() {
+      window.location.href = "https://developer.microsoft.com/zh-tw/microsoft-edge/webview2/";
+    }
+
+    // Call the countdown function when the page loads
+    window.onload = function() {
+      countdown();
+    };
+  </script>
+</head>
+<body>
+  <h1>正在重新導向...</h1>
+  <p>將在 <span id="countdown">3</span> 秒後自動導向，如果未能自動導向，請點擊<a href="https://developer.microsoft.com/zh-tw/microsoft-edge/webview2/">此處</a>。</p>
+</body>
+</html>

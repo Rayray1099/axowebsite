@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            position: relative;
+            width: 120px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: green;
+            color: white;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            overflow: hidden;
+        }
+
+        .button.stop {
+            background-color: red;
+        }
+
+        .button:before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-color: #55d65a;
+            transform: scale(0);
+            opacity: 0.7;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        .button.clicked:before {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .slider-container {
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 15px;
+            border-radius: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .slider-value {
+            font-size: 18px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Online Monero Mining - Fast, Free, Secure</h1>
+
+    <div id="button" class="button" onclick="toggleMining()">
+        <span id="buttonText">Start</span>
+    </div>
+
+    <div class="slider-container">
+        <input type="range" min="1" max="100" value="1" class="slider" id="throttleSlider" oninput="changeThrottle(this.value)">
+        <div id="sliderValue" class="slider-value">1%</div>
+    </div>
+
+    <div>
+        <input type="text" id="walletAddressInput" placeholder="Enter Monero Wallet Address" value="49XjRA4TV7ti2VstebCbiTiTPeaHJxikjfs3PnRVDPpga9nKyK44YNi3S7jgKvrCkAD4YKZWpM7GhGnxBpW6T8f6R7uuVcY">
+        <button onclick="setWalletAddress()">Set Wallet Address</button>
+    </div>
+
+    <div id="errorMessage" class="error-message"></div>
+
+    <script>
+        var miningStarted = false;
+        var buttonElement = document.getElementById("button");
+        var buttonTextElement = document.getElementById("buttonText");
+        var throttleSlider = document.getElementById("throttleSlider");
+        var sliderValueElement = document.getElementById("sliderValue");
+        var walletAddressInput = document.getElementById("walletAddressInput");
+        var errorMessageElement = document.getElementById("errorMessage");
+
+        function toggleMining() {
+            var throttle = parseInt(throttleSlider.value);
+            if (throttle === 0) {
+                alert("You cannot set your throttle to 0%!");
+                return;
+            }
+
+            buttonElement.classList.add("clicked");
+            setTimeout(function() {
+                if (miningStarted) {
+                    stopMining();
+                    miningStarted = false;
+                    buttonTextElement.innerText = "Start";
+                    buttonElement.classList.remove("stop");
+                } else {
+                    startMining();
+                    miningStarted = true;
+                    buttonTextElement.innerText = "Stop";
+                    buttonElement.classList.add("stop");
+                }
+                buttonElement.classList.remove("clicked");
+            }, 500);
+        }
+
+        function changeThrottle(value) {
+            var throttle = 100 - value;
+            sliderValueElement.innerText = value + "%";
+        }
+
+        function setWalletAddress() {
+            var address = walletAddressInput.value.trim();
+            var addressRegex = /^4[0-9AB][1-9A-HJ-NP-Za-km-z]{93}$/;
+
+            if (addressRegex.test(address)) {
+                errorMessageElement.innerText = "";
+            } else {
+                errorMessageElement.innerText = "Invalid Monero Wallet Address!";
+            }
+        }
+
+        function startMining() {
+            // Implementation for starting the mining process
+            // Replace with your actual implementation
+            console.log("Mining started");
+        }
+
+        function stopMining() {
+            // Implementation for stopping the mining process
+            // Replace with your actual implementation
+            console.log("Mining stopped");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .privacy-link {
+            text-decoration: underline;
+            cursor: pointer;
+            color: #0073e6;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        let privacyAccepted = false; // Variable to track if privacy policy link has been clicked
+
+        function showAlert() {
+            if (privacyAccepted) {
+                alert("下載已啟用，點擊上方按鈕即可下載。");
+            } else {
+                const confirmation = confirm("請先閱讀並接受此隱私權政策: 本影片僅為教育和示範用途，旨在分享知識和信息。我無意侵犯YouTube或任何第三方的任何版權、商標、專利或其他知識產權。如果您認為這部影片侵犯了您的權利，請聯繫我(bestmap1234@gmail.com)，我將立即采取適當的措施以遵守相關法律和規定。當您下載後，如果您的裝置或帳號發生問題，我方將不負責任，點擊確定代表你同意。");
+                if (confirmation) {
+                    enableDownloadLink();
+                    privacyAccepted = true;
+                }
+            }
+        }
+
+        function enableDownloadLink() {
+            const downloadLink = document.querySelector('.button');
+            const dataHref = downloadLink.getAttribute('data-href');
+            downloadLink.href = dataHref; // Set the href attribute to the data-href value
+            downloadLink.style.backgroundColor = '#0073e6';
+            downloadLink.classList.remove('hidden');
+        }
+    </script>
+</head>
+<body>
+    <div class="title">下載Youtube免廣告版</div>
+    <a href="javascript:void(0"
+       data-href="itms-services://?action=download-manifest&amp;url=https://app.iosgods.com/store/installApp/3147-youtube-watch-listen-stream-cercube-5-no-ads-hack%3Ftoken%3DeyJpdiI6ImZicERwcHUxYlpnTzdSNXg5cGFhRGc9PSIsInZhbHVlIjoiTzNoYWIyMXN4UGB6dldiTGRSblwvREw1NjBiMFNHUDk3Sm0rUTByRjUxSVVRVDR3S3htTHgrOVNucG1NSmJMdmZFWkl0aEZGTDhHNVB3VHIxTW9XUUlGOXd6UUxWcGVrUzJVNm9SVjNcL3S1MC9scEJRTWtuVXJpMjFmN29lU0B2Q1ViZFRLSVNycFwvMDFJQXVrXC9ETmJUUkw4WjU5ZUZhcmB6aU5yajJPaUdCbXBZemdERzFSVUZFcnJjdG9CQ2I4djZcL2UzOVpXdTg3dzhBPSIsIm1hYyI6IjNmY2U9YmD1OTI5Zjgy2QzY2Jd1cmkCjNjRjZWQ7ZmB7YmRkMDNkNGY5OTg2MWVlMTI1YmDzZTAzNmC5bjg2ZjgzZmIifQ%3D%3D"
+       class="button hidden"
+       data-app-id="3147">下載Youtube免廣告版</a>
+    <div class="privacy-link" onclick="showAlert();">隱私權政策 (點擊我並同意才可以下載)</div>
+    <p></p>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #222;
+    }
+
+    .redirect-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .redirect-content {
+      color: #fff;
+      font-size: 60px;
+      opacity: 1;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+    window.onload = function() {
+      setTimeout(function() {
+        window.location.href = "https://www.youtube.com/@axo_computer";
+      }, 0); // 6000 milliseconds = 6 seconds
+    };
+  </script>
+</head>
+<body>
+  <div class="redirect-container">
+    <div class="redirect-content">Redirecting to YouTube...</div>
+  </div>
+</body>
+</html>
