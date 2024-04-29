@@ -11,6 +11,7 @@
             padding: 0;
             background-color: #f2f2f2;
         }
+
         header {
             background-color: #333;
             color: #fff;
@@ -20,37 +21,54 @@
             width: 100%;
             z-index: 1;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: space-between; /* Add space between the title and the menu */
+            align-items: center; /* Center the content vertically */
         }
+
         h1 {
             margin: 0;
-            margin-right: 20px;
-            font-family: 'Bungee', cursive;
-            animation: popOut 1s ease-in-out infinite alternate;
+            margin-right: 20px; /* Add margin to the right of the title */
+            font-family: 'Bungee', cursive; /* Use the 'Bungee' font for the title */
+            animation: popOut 1s ease-in-out infinite alternate; /* Add animation */
         }
+
         @keyframes popOut {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
         }
+
         nav {
             display: flex;
-            align-items: center;
+            align-items: center; /* Center the content vertically */
         }
+
         nav ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
         }
+
         nav ul li {
             display: inline;
             margin-right: 10px;
             animation: fadeIn 1s ease-in-out;
         }
+
         @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         nav ul li a {
             color: #fff;
             text-decoration: none;
@@ -60,17 +78,25 @@
             transition: background-color 0.3s ease;
             animation: zoom 1s ease infinite alternate;
         }
+
         @keyframes zoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
         }
+
         nav ul li a:hover {
             background-color: #999;
         }
+
         main {
             padding-top: 140px;
             text-align: center;
         }
+
         #scroll-down {
             margin: 50px;
             padding: 50px;
@@ -79,54 +105,154 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             animation: fadeIn 1s ease;
         }
+
         #scroll-down img {
             width: 200px;
             height: 200px;
             margin-bottom: 20px;
             animation: zoom 1s ease infinite alternate;
         }
+
         #scroll-down p {
             font-size: 24px;
             animation: fadeIn 1s ease;
         }
+
+        #play-online {
+            margin: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease;
+        }
+
+        #play-online img {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+            animation: zoom 1s ease infinite alternate;
+        }
+
+        #play-online p {
+            font-size: 24px;
+            animation: fadeIn 1s ease;
+        }
+
+        #mine-online {
+            margin: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease;
+        }
+
+        #mine-online img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            animation: zoom 1s ease infinite alternate;
+        }
+
+        #mine-online p {
+            font-size: 24px;
+            animation: fadeIn 1s ease;
+        }
+
+        /* Additional CSS styles for enhanced appearance */
+
         footer {
             background-color: #333;
             color: #fff;
             padding: 20px;
             text-align: center;
         }
+
         footer p {
             margin: 0;
         }
+
+        .language-changer {
+            display: flex;
+            align-items: center;
+            margin-right: 20px; /* Add margin to the right of the language changer */
+        }
+
+        .language-changer select {
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        /* Additional CSS styles for hyperlinks */
+
+        .button-link {
+            display: inline-block;
+            color: #fff;
+            background-color: #666;
+            border-radius: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            animation: zoom 1s ease infinite alternate;
+        }
+
+        .button-link:hover {
+            background-color: #999;
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet"> <!-- Add Google Fonts link -->
 </head>
 <body>
     <header>
         <h1>Axo's Website!</h1>
         <nav>
             <ul>
-                <li><a class="button-link" onclick="openWebsite('/tw')">在線上玩 Minecraft 1.5.2！</a></li>
+                <li><a class="button-link" onclick="openWebsite('/mc')">Minecraft 1.5.2</a></li>
+                <li><a class="button-link" onclick="openWebsite('/aboutme')">關於我</a></li>
+                <li><a class="button-link" onclick="openWebsite('/youtube')">我的Youtube頻道</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <div id="scroll-down">
             <img src="pfp.png" alt="Profile Picture">
-            <p>歡迎來到我的網站！在下方查看各項內容：</p>
+            <p id="welcome-text">歡迎來到我的網站！在下方查看各項內容：</p>
         </div>
         <div id="play-online">
             <img src="minecraft.png" alt="Minecraft 1.5.2" style="width: 200px; height: 200px;">
-            <p><a class="button-link" onclick="openWebsite('/tw')">在線上玩 Minecraft 1.5.2！</a></p>
+            <p id="minecraft-link"><a class="button-link" onclick="openWebsite('/mc')">Play Minecraft 1.5.2 online!</a></p>
         </div>
     </main>
+
     <footer>
-        <p>&copy; 2024 Axo's Website. All rights reserved.</p>
+        <p>&copy; 2023 Axo's Website. All rights reserved.</p>
     </footer>
+
+    <audio id="audio" src="lofi.mp3" loop></audio>
+
     <script>
         function openWebsite(url) {
             window.open("https://axol.lol" + url, "_blank");
         }
+
+        function playAudioRandomTime() {
+            var audio = document.getElementById("audio");
+            var duration = 2011;
+            var randomTime = Math.floor(Math.random() * duration);
+            audio.currentTime = randomTime;
+        }
+
+        // Add an event listener to play the audio when the user interacts with the page
+        document.addEventListener("click", function() {
+            var audio = document.getElementById("audio");
+            audio.play();
+        });
+
+        // Call the function to set the random time
+        playAudioRandomTime();
     </script>
 </body>
 </html>
