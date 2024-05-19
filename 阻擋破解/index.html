@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2474829687651266"
-     crossorigin="anonymous"></script>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
@@ -9,42 +7,90 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
             text-align: center;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
         h1 {
-            background-color: #007BFF;
+            background-color: rgba(0, 0, 0, 0.8);
             color: #fff;
             padding: 20px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         #codeInput {
-            width: 100%;
+            width: 80%;
             height: 200px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
+            border: none;
+            border-radius: 0 0 10px 10px;
             padding: 10px;
             font-family: monospace;
+            margin-bottom: 20px;
+            resize: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         #copyButton {
-            background-color: #007BFF;
+            background: linear-gradient(45deg, #007BFF, #00C6FF);
             color: #fff;
             font-size: 18px;
-            padding: 20px 40px;
+            padding: 15px 30px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            margin-top: 20px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         #copyButton:hover {
-            background-color: #0056b3;
+            background: linear-gradient(45deg, #0056b3, #0088cc);
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
         p {
@@ -70,12 +116,8 @@ youtube.com##+js(set, Object.prototype.hasAllowedInstreamAd, true)
         // Function to copy code to clipboard
         document.getElementById("copyButton").addEventListener("click", function() {
             const codeInput = document.getElementById("codeInput");
-            const textArea = document.createElement("textarea");
-            textArea.value = codeInput.value;
-            document.body.appendChild(textArea);
-            textArea.select();
+            codeInput.select();
             document.execCommand("copy");
-            document.body.removeChild(textArea);
             alert("代碼成功複製到剪貼板！");
         });
     </script>
