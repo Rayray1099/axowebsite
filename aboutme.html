@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我 - Ray</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 2px solid #fff;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        p {
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .contact {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .contact a {
+            color: #00C6FF;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact a:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>關於我</h1>
+    </header>
+    <img id="profile-picture" src="https://axoltech.top/pfp.png" alt="Ray's Profile Picture">
+    <div class="content">
+        <h2>Ray</h2>
+        <p>大家好！我是 Ray，一位熱愛電腦的愛好者。我對於電腦技術和嘗試新事物有著濃厚的興趣。</p>
+        <h3>興趣愛好</h3>
+        <p>我喜歡玩電腦遊戲，並且經常嘗試各種新鮮事物來保持我的技能和知識的更新。</p>
+        <h3>聯絡方式</h3>
+        <p class="contact">您可以通過以下方式聯絡我：</p>
+        <p class="contact">Discord: <a href="https://discord.com" target="_blank">.dcaxo</a></p>
+        <p class="contact">Email: <a href="mailto:bestmap1234@gmail.com">bestmap1234@gmail.com</a></p>
+    </div>
+</body>
+</html>
