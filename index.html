@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2474829687651266"
-     crossorigin="anonymous"></script>
- <script type="text/javascript" src="https://udbaa.com/slider.php?section=General&pub=662336&ga=g&side=left"></script>
-<marquee direction="right" width="50%" behavior="scroll" scrollamount="3">網站上的廣告不要亂點 :/</marquee>
-
-
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
     <title>Axo's Website</title>
     <link rel="icon" href="pfp.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f2f2f2;
+            background: linear-gradient(135deg, #f06, #4a90e2);
+            color: #fff;
+            overflow-x: hidden;
         }
 
         header {
-            background-color: #333;
+            background-color: rgba(0, 0, 0, 0.8);
             color: #fff;
             padding: 20px;
             position: fixed;
@@ -24,75 +24,53 @@
             width: 100%;
             z-index: 1;
             display: flex;
-            justify-content: space-between; /* Add space between the title and the menu */
-            align-items: center; /* Center the content vertically */
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         h1 {
             margin: 0;
-            margin-right: 20px; /* Add margin to the right of the title */
-            font-family: 'Bungee', cursive; /* Use the 'Bungee' font for the title */
-            animation: popOut 1s ease-in-out infinite alternate; /* Add animation */
+            margin-right: 20px;
+            font-family: 'Bungee', cursive;
+            animation: popOut 1s ease-in-out infinite alternate;
         }
 
         @keyframes popOut {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.1);
-            }
-        }
-
-        nav {
-            display: flex;
-            align-items: center; /* Center the content vertically */
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
         }
 
         nav ul {
-            list-style-type: none;
+            list-style: none;
             margin: 0;
             padding: 0;
+            display: flex;
         }
 
         nav ul li {
-            display: inline;
-            margin-right: 10px;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-right: 20px;
         }
 
         nav ul li a {
             color: #fff;
             text-decoration: none;
-            padding: 10px;
-            border-radius: 20px;
-            background-color: #666;
-            transition: background-color 0.3s ease;
-            animation: zoom 1s ease infinite alternate;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ffb4b4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: hoverEffect 3s infinite ease-in-out;
         }
 
-        @keyframes zoom {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.1);
-            }
+        @keyframes hoverEffect {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
 
         nav ul li a:hover {
-            background-color: #999;
+            transform: scale(1.2);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.6);
         }
 
         main {
@@ -100,113 +78,72 @@
             text-align: center;
         }
 
-        #scroll-down {
-            margin: 50px;
+        .content-box {
+            margin: 50px auto;
             padding: 50px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1s ease;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease-out;
         }
 
-        #scroll-down img {
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-box img {
             width: 200px;
             height: 200px;
-            margin-bottom: 20px;
-            animation: zoom 1s ease infinite alternate;
-        }
-
-        #scroll-down p {
-            font-size: 24px;
-            animation: fadeIn 1s ease;
-        }
-
-        #play-online {
-            margin: 50px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1s ease;
-        }
-
-        #play-online img {
-            width: 200px;
-            height: 200px;
-            margin-bottom: 20px;
-            animation: zoom 1s ease infinite alternate;
-        }
-
-        #play-online p {
-            font-size: 24px;
-            animation: fadeIn 1s ease;
-        }
-
-        #mine-online {
-            margin: 50px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1s ease;
-        }
-
-        #mine-online img {
-            width: 150px;
-            height: 150px;
             margin-bottom: 20px;
             border-radius: 50%;
-            animation: zoom 1s ease infinite alternate;
+            animation: bounce 2s infinite;
         }
 
-        #mine-online p {
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .content-box p {
             font-size: 24px;
-            animation: fadeIn 1s ease;
         }
-
-        /* Additional CSS styles for enhanced appearance */
 
         footer {
-            background-color: #333;
+            background-color: rgba(0, 0, 0, 0.8);
             color: #fff;
             padding: 20px;
             text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
         }
-
-        footer p {
-            margin: 0;
-        }
-
-        .language-changer {
-            display: flex;
-            align-items: center;
-            margin-right: 20px; /* Add margin to the right of the language changer */
-        }
-
-        .language-changer select {
-            padding: 5px;
-            border-radius: 10px;
-        }
-
-        /* Additional CSS styles for hyperlinks */
 
         .button-link {
             display: inline-block;
             color: #fff;
-            background-color: #666;
+            background: linear-gradient(45deg, #4a90e2, #6be2ff);
             border-radius: 20px;
             padding: 10px 20px;
             text-decoration: none;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-            animation: zoom 1s ease infinite alternate;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .button-link:hover {
-            background-color: #999;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(106, 188, 255, 0.6);
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet"> <!-- Add Google Fonts link -->
 </head>
 <body>
     <header>
@@ -220,34 +157,22 @@
         </nav>
     </header>
     <main>
-        <div id="scroll-down">
+        <div class="content-box" id="scroll-down">
             <img src="pfp.png" alt="Profile Picture">
             <p id="welcome-text">歡迎來到我的網站！在下方查看各項內容：</p>
         </div>
-         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2474829687651266"
-     crossorigin="anonymous"></script>
-<!-- ad -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2474829687651266"
-     data-ad-slot="8467526571"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-        <div id="play-online">
-            <img src="minecraft.png" alt="Minecraft 1.5.2" style="width: 200px; height: 200px;">
+         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2474829687651266" crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2474829687651266" data-ad-slot="8467526571" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <div class="content-box" id="play-online">
+            <img src="minecraft.png" alt="Minecraft 1.5.2">
             <p id="minecraft-link"><a class="button-link" onclick="openWebsite('/tw')">在線上玩Minecraft 1.5.2!</a></p>
         </div>
     </main>
-
     <footer>
         <p>&copy; 2023 Axo's Website. All rights reserved.</p>
     </footer>
-
     <audio id="audio" src="lofi.mp3" loop></audio>
-
     <script>
         function openWebsite(url) {
             window.open("https://axoltech.top" + url, "_blank");
@@ -260,13 +185,11 @@
             audio.currentTime = randomTime;
         }
 
-        // Add an event listener to play the audio when the user interacts with the page
         document.addEventListener("click", function() {
             var audio = document.getElementById("audio");
             audio.play();
         });
 
-        // Call the function to set the random time
         playAudioRandomTime();
     </script>
 </body>
