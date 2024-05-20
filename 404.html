@@ -5,6 +5,8 @@
   <title>404 - Page Not Found</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+    
     body {
       margin: 0;
       padding: 0;
@@ -12,20 +14,25 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: #1e1e1e;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
       color: #fff;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Poppins', sans-serif;
       overflow: hidden;
     }
     .container {
       text-align: center;
     }
     .error-message {
-      font-size: 3em;
+      font-size: 4em;
+      font-weight: 700;
       margin-bottom: 20px;
+      animation: fadeIn 2s ease-in-out;
     }
     .instructions {
       margin-bottom: 40px;
+      font-weight: 300;
+      font-size: 1.2em;
+      animation: fadeIn 2s ease-in-out 1s;
     }
     .game {
       position: relative;
@@ -33,73 +40,146 @@
       height: 60vh;
       border: 2px solid #fff;
       overflow: hidden;
-      background: #000;
+      background: #87CEEB;
+      animation: fadeIn 2s ease-in-out 2s;
     }
-    .catcher {
+    .bird {
       position: absolute;
+      width: 40px;
+      height: 40px;
+      background: url('https://i.imgur.com/6b6psnA.png') no-repeat center center / cover;
+      border-radius: 50%;
+    }
+    .pipe {
+      position: absolute;
+      width: 60px;
+      background: #228B22;
+    }
+    .pipe.upper {
+      top: 0;
+    }
+    .pipe.lower {
       bottom: 0;
-      left: 50%;
-      width: 100px;
-      height: 20px;
-      background: #fff;
-      transform: translateX(-50%);
     }
-    .object {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #f00;
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="error-message">404 - Page Not Found</div>
-    <div class="instructions">Try to catch the falling objects!</div>
-    <div class="game">
-      <div class="catcher"></div>
+    <div class="instructions">Press Space to Start</div>
+    <div class="game" id="game">
+      <div class="bird" id="bird"></div>
     </div>
   </div>
   <script>
-    const gameArea = document.querySelector('.game');
-    const catcher = document.querySelector('.catcher');
-    let gameWidth = gameArea.clientWidth;
-    let gameHeight = gameArea.clientHeight;
-    let catcherWidth = catcher.clientWidth;
-    let catcherX = gameWidth / 2 - catcherWidth / 2;
+    const game = document.getElementById('game');
+    const bird = document.getElementById('bird');
+    const gameWidth = game.clientWidth;
+    const gameHeight = game.clientHeight;
+    let birdY = gameHeight / 2;
+    let birdSpeed = 0;
+    let isPlaying = false;
+    let pipes = [];
+    let pipeGap = 150;
 
-    catcher.style.left = catcherX + 'px';
-
-    document.addEventListener('mousemove', (e) => {
-      let rect = gameArea.getBoundingClientRect();
-      let mouseX = e.clientX - rect.left;
-      catcherX = Math.min(gameWidth - catcherWidth, Math.max(0, mouseX - catcherWidth / 2));
-      catcher.style.left = catcherX + 'px';
-    });
-
-    function createFallingObject() {
-      const object = document.createElement('div');
-      object.classList.add('object');
-      object.style.left = Math.random() * (gameWidth - 20) + 'px';
-      object.style.top = '0px';
-      gameArea.appendChild(object);
-
-      let fallInterval = setInterval(() => {
-        let objectY = parseInt(object.style.top);
-        if (objectY + 20 >= gameHeight) {
-          clearInterval(fallInterval);
-          gameArea.removeChild(object);
-        } else if (objectY + 20 >= gameHeight - 20 && objectY + 20 <= gameHeight && parseInt(object.style.left) + 20 >= catcherX && parseInt(object.style.left) <= catcherX + catcherWidth) {
-          clearInterval(fallInterval);
-          gameArea.removeChild(object);
-          // Increase score or other logic for catching the object
-        } else {
-          object.style.top = objectY + 5 + 'px';
-        }
-      }, 50);
+    function startGame() {
+      isPlaying = true;
+      bird.style.top = birdY + 'px';
+      birdSpeed = 0;
+      pipes = [];
+      createPipes();
+      gameLoop();
     }
 
-    setInterval(createFallingObject, 1000);
+    function gameLoop() {
+      if (!isPlaying) return;
+
+      // Bird gravity
+      birdSpeed += 0.5;
+      birdY += birdSpeed;
+      if (birdY + bird.clientHeight > gameHeight || birdY < 0) {
+        endGame();
+      }
+      bird.style.top = birdY + 'px';
+
+      // Move pipes
+      pipes.forEach(pipe => {
+        pipe.x -= 5;
+        if (pipe.x + pipe.width < 0) {
+          pipe.element.remove();
+          pipes.shift();
+          createPipe();
+        } else {
+          pipe.element.style.left = pipe.x + 'px';
+        }
+
+        // Collision detection
+        if (pipe.x < 80 && pipe.x + pipe.width > 40 && (birdY < pipe.top || birdY + 40 > pipe.bottom)) {
+          endGame();
+        }
+      });
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    function createPipes() {
+      for (let i = 0; i < 3; i++) {
+        createPipe(i * 300 + 500);
+      }
+    }
+
+    function createPipe(x = gameWidth) {
+      const pipeHeight = Math.floor(Math.random() * (gameHeight - pipeGap - 20)) + 20;
+      const pipeUpper = document.createElement('div');
+      pipeUpper.classList.add('pipe', 'upper');
+      pipeUpper.style.height = pipeHeight + 'px';
+      pipeUpper.style.left = x + 'px';
+
+      const pipeLower = document.createElement('div');
+      pipeLower.classList.add('pipe', 'lower');
+      pipeLower.style.height = gameHeight - pipeHeight - pipeGap + 'px';
+      pipeLower.style.left = x + 'px';
+
+      game.appendChild(pipeUpper);
+      game.appendChild(pipeLower);
+
+      pipes.push({
+        x: x,
+        width: 60,
+        top: pipeHeight,
+        bottom: pipeHeight + pipeGap,
+        element: pipeUpper
+      });
+      pipes.push({
+        x: x,
+        width: 60,
+        top: pipeHeight + pipeGap,
+        bottom: gameHeight,
+        element: pipeLower
+      });
+    }
+
+    function endGame() {
+      isPlaying = false;
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+
+    function handleKeyDown(e) {
+      if (e.code === 'Space') {
+        if (!isPlaying) {
+          startGame();
+        } else {
+          birdSpeed = -7;
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
   </script>
 </body>
 </html>
